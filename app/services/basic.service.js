@@ -46,17 +46,6 @@ exports.getGrade = (payload) => {
   return result
 }
 
-exports.calculate = (payload) => {
-  const {num1, opcode, num2} = payload
-  let _num1 = Number(num1)
-  let _num2 = Number(num2)
-  const result = {num1, opcode, num2}
-  switch(opcode) {
-      case '+' : result.res = _num1 + _num2; break;
-      case '-' : result.res = _num1 - _num2; break;
-      case '*' : result.res = _num1 * _num2; break;
-      case '/' : result.res = _num1 / _num2; break;
-      case '%' : result.res = _num1 % _num2; break;
-  }
-  return result
+exports.game = (req, res) => {
+  res.status(200).json(req.body)
 }
