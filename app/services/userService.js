@@ -1,5 +1,6 @@
 import db from '../models/index.js'
 import express from 'express';
+import dotenv from 'dotenv'
 
 export default function UserService() {
     const router = express.Router();
@@ -41,7 +42,7 @@ export default function UserService() {
         },
         login(req, res){
             console.log(`### user login access ### `)
-        User.find({userid: req.params.id, password: req.params.password})
+        User.findOne({userid: req.params.id, password: req.params.password})
             .exec((err, user) => {
                 if (err) 
                     return res

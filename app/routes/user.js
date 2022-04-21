@@ -1,6 +1,7 @@
 import express from "express"
 import cors from 'cors'
 import dotenv from 'dotenv'
+import UserService from '../services/userService.js'
 dotenv.config()
 const corsOptions = {
     origin: process.env.ORIGIN,
@@ -8,10 +9,15 @@ const corsOptions = {
 }
 const app = express()
 app.use(cors());
-
+app.use(function(_req, res, next) {
+    res.header(
+      "Access-Control-Allow-Headers",
+      "x-access-token, Origin, Content-Type, Accept"
+    );
+    next();
+  });
 app.post('/join', cors(corsOptions),(req, res) => {
-    const service = new BasicService()
-    res.status(200).json(service.getBmi(req, res))
+    new UserService().join(req, res)
 })
 
 export default app
