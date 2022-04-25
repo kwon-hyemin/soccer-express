@@ -7,6 +7,7 @@ import basicRouter from "./app/routes/basic.js"
 import userRouter from "./app/routes/user.js"
 import indexRouter from "./app/routes/index.js"
 import todoRouter from "./app/routes/todo.js"
+import boardRouter from "./app/routes/board.js"
 import ResponseService from "./app/services/responseService.js"
 
 
