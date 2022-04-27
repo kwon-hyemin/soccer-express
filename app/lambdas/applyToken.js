@@ -15,3 +15,4 @@ const applyToken = headers => {
 }
 
 export default applyToken
+
