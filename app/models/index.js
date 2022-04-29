@@ -1,14 +1,13 @@
-// mongoose 연결
-require('dotenv').config()
-const {MONGO_URI} = process.env
-const mongoose = require('mongoose')
+import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+import UserModel from './User.js'
+import TodoModel from './Todo.js'
 mongoose.Promise = global.Promise
 
-const db = {} // 빈 땅에 db라는 이름을 줌
+const db = {}
 db.mongoose = mongoose
-db.url = MONGO_URI
-db.user = require('./user.model')(mongoose)
-db.board = require('./board.model')(mongoose)
+db.url = dotenv.MONGO_URI
+db.User = new UserModel(mongoose)
+db.Todo = new TodoModel(mongoose)
 
-module.exports = db
-
+export default db
